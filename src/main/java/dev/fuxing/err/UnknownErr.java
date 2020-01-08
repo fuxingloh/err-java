@@ -9,6 +9,10 @@ package dev.fuxing.err;
  */
 public class UnknownErr extends Err {
 
+    public UnknownErr() {
+        super(500, "Unknown error.");
+    }
+
     public UnknownErr(String message) {
         super(500, message);
     }

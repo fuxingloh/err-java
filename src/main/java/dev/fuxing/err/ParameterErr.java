@@ -10,6 +10,9 @@ package dev.fuxing.err;
  */
 public class ParameterErr extends BadRequestErr {
 
+    public ParameterErr() {
+    }
+
     public ParameterErr(String message) {
         super(message);
     }

@@ -18,6 +18,10 @@ package dev.fuxing.err;
  */
 public class ConflictErr extends Err {
 
+    public ConflictErr() {
+        super(409, "Conflict.");
+    }
+
     /**
      * @param message information for the user to fix the problem.
      */

@@ -7,7 +7,7 @@ package dev.fuxing.err;
 public class NotFoundErr extends Err {
 
     public NotFoundErr() {
-        super(404, "Not found");
+        super(404, "Not found.");
     }
 
     public NotFoundErr(String message) {

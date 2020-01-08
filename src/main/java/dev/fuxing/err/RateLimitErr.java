@@ -8,6 +8,10 @@ package dev.fuxing.err;
  */
 public class RateLimitErr extends Err {
 
+    public RateLimitErr() {
+        super(429, "Too many requests.");
+    }
+
     public RateLimitErr(String message) {
         super(429, message);
     }

@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.UUID;
 
 /**
  * Err, an idea to <b>full-stack language agnostic error handling</b> that can survive transport between service and
@@ -12,7 +13,8 @@ import java.lang.reflect.InvocationTargetException;
  *
  * <li>HTTP status code, a language agnostic standardised specification for everyone to understand.</li>
  * <li>URL of the error, a universal place to host your errors to speed up debugging.</li>
- * <li>Message of the error, human readable message for developer and user.</li>
+ * <li>UUID of the error, unique and passed along from err to err.</li>
+ * <li>Message of the error, human readable message for developer and user. Passed along from err to err.</li>
  *
  * @author Fuxing Loh
  * @since 2017-06-16 at 12:42
@@ -30,7 +32,8 @@ public class Err extends RuntimeException {
 
     private final int code;
     private final String url;
-    private final String message;
+    private String uuid;
+    private String message;
 
     /**
      * @param code    HTTP status code
@@ -39,8 +42,9 @@ public class Err extends RuntimeException {
     protected Err(int code, String message) {
         super(message);
         this.code = code;
-        this.message = message;
         this.url = getUrl(getClass());
+        this.uuid = UUID.randomUUID().toString();
+        this.message = message;
     }
 
     /**
@@ -51,8 +55,9 @@ public class Err extends RuntimeException {
     protected Err(int code, String message, Throwable throwable) {
         super(message, throwable);
         this.code = code;
-        this.message = message;
         this.url = getUrl(getClass());
+        this.uuid = UUID.randomUUID().toString();
+        this.message = message;
     }
 
     /**
@@ -67,6 +72,13 @@ public class Err extends RuntimeException {
      */
     public String getUrl() {
         return url;
+    }
+
+    /**
+     * @return uuid of err that is pass along from err to err
+     */
+    public String getUuid() {
+        return uuid;
     }
 
     /**
@@ -106,15 +118,20 @@ public class Err extends RuntimeException {
 
     /**
      * @param url     of the error to parse
-     * @param message of the error
+     * @param uuid    of the error to pass along
+     * @param message of the error to pass along
      * @return parsed Err
      * @throws ImplErr cased by parsing
      */
-    public static Err parse(String url, String message) throws ImplErr {
+    public static Err parse(String url, String uuid, String message) throws ImplErr {
         try {
             Class<?> clazz = Err.getClass(url);
-            Constructor<?> constructor = clazz.getConstructor(String.class);
-            return (Err) constructor.newInstance(message);
+            Constructor<?> constructor = clazz.getConstructor();
+
+            Err err = (Err) constructor.newInstance();
+            err.uuid = uuid;
+            err.message = message;
+            return err;
         } catch (ClassNotFoundException ex) {
             throw new ImplErr("Error class not found for " + url);
         } catch (NoSuchMethodException ex) {

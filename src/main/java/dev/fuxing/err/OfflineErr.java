@@ -9,6 +9,10 @@ package dev.fuxing.err;
  */
 public class OfflineErr extends Err {
 
+    public OfflineErr() {
+        super(502, "Offline error.");
+    }
+
     public OfflineErr(String message) {
         super(502, message);
     }
