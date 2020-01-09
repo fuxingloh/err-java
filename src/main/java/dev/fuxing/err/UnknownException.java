@@ -7,17 +7,17 @@ package dev.fuxing.err;
  * @author Fuxing Loh
  * @since 2017-06-16 at 13:27
  */
-public class UnknownErr extends Err {
+public class UnknownException extends Err {
 
-    public UnknownErr() {
+    public UnknownException() {
         super(500, "Unknown error.");
     }
 
-    public UnknownErr(String message) {
+    public UnknownException(String message) {
         super(500, message);
     }
 
-    public UnknownErr(String message, Throwable throwable) {
+    public UnknownException(String message, Throwable throwable) {
         super(500, message, throwable);
     }
 }

@@ -7,20 +7,20 @@ package dev.fuxing.err;
  * @author Fuxing Loh
  * @since 2018-07-17 at 12:39
  */
-public class ForbiddenErr extends Err {
+public class ForbiddenException extends Err {
 
-    public ForbiddenErr() {
+    public ForbiddenException() {
         super(403, "Forbidden");
     }
 
     /**
      * @param message reasons, (not recommended, better to not let the user know why, especially for private content)
      */
-    public ForbiddenErr(String message) {
+    public ForbiddenException(String message) {
         super(403, message);
     }
 
-    public ForbiddenErr(String message, Throwable throwable) {
+    public ForbiddenException(String message, Throwable throwable) {
         super(403, message, throwable);
     }
 }

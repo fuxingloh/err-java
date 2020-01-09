@@ -4,17 +4,17 @@ package dev.fuxing.err;
  * @author Fuxing Loh
  * @since 2019-06-06 at 15:37
  */
-public class NotFoundErr extends Err {
+public class NotFoundException extends Err {
 
-    public NotFoundErr() {
+    public NotFoundException() {
         super(404, "Not found.");
     }
 
-    public NotFoundErr(String message) {
+    public NotFoundException(String message) {
         super(404, message);
     }
 
-    public NotFoundErr(String message, Throwable throwable) {
+    public NotFoundException(String message, Throwable throwable) {
         super(404, message, throwable);
     }
 }

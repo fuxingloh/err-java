@@ -7,13 +7,13 @@ package dev.fuxing.err;
  * @author Fuxing Loh
  * @since 2017-03-22 at 17:19
  */
-public class TimeoutErr extends Err {
+public class TimeoutException extends Err {
 
-    public TimeoutErr() {
+    public TimeoutException() {
         super(408, "Request from client to server has timeout.");
     }
 
-    public TimeoutErr(String message) {
+    public TimeoutException(String message) {
         super(408, message);
     }
 
@@ -22,7 +22,7 @@ public class TimeoutErr extends Err {
      * @param message   of timeout
      * @param throwable cause of timeout
      */
-    public TimeoutErr(int code, String message, Throwable throwable) {
+    public TimeoutException(int code, String message, Throwable throwable) {
         super(code, message, throwable);
     }
 }

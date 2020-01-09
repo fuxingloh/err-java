@@ -7,17 +7,17 @@ package dev.fuxing.err;
  * @author Fuxing Loh
  * @since 2017-07-05 at 19:49
  */
-public class ValidationErr extends Err {
+public class ValidationException extends Err {
 
-    public ValidationErr() {
+    public ValidationException() {
         super(422, "Request body contains error.");
     }
 
-    public ValidationErr(String message) {
+    public ValidationException(String message) {
         super(422, message);
     }
 
-    public ValidationErr(String message, Throwable throwable) {
+    public ValidationException(String message, Throwable throwable) {
         super(422, message, throwable);
     }
 }

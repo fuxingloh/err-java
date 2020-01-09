@@ -5,20 +5,20 @@ package dev.fuxing.err;
  * The client SHOULD NOT repeat the request without modifications.
  *
  * @author Fuxing Loh
- * @see ParameterErr a subset of this error
+ * @see ParameterException a subset of this error
  * @since 2018-09-27 at 15:15
  */
-public class BadRequestErr extends Err {
+public class BadRequestException extends Err {
 
-    public BadRequestErr() {
+    public BadRequestException() {
         super(400, "Bad request.");
     }
 
-    public BadRequestErr(String message) {
+    public BadRequestException(String message) {
         super(400, message);
     }
 
-    public BadRequestErr(String message, Throwable throwable) {
+    public BadRequestException(String message, Throwable throwable) {
         super(400, message, throwable);
     }
 }

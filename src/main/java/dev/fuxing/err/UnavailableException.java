@@ -7,17 +7,17 @@ package dev.fuxing.err;
  * @author Fuxing Loh
  * @since 2017-12-03 at 08:13
  */
-public class UnavailableErr extends Err {
+public class UnavailableException extends Err {
 
-    public UnavailableErr() {
+    public UnavailableException() {
         super(503, "Currently unable to handle the request.");
     }
 
-    public UnavailableErr(String message) {
+    public UnavailableException(String message) {
         super(503, message);
     }
 
-    public UnavailableErr(String message, Throwable throwable) {
+    public UnavailableException(String message, Throwable throwable) {
         super(503, message, throwable);
     }
 }

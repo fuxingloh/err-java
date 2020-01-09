@@ -9,12 +9,12 @@ package dev.fuxing.err;
  * @author Fuxing Loh
  * @since 2020-01-07 at 12:09
  */
-public final class ImplErr extends Err {
+public final class ErrException extends Err {
 
     /**
      * @param reason to help identity error
      */
-    public ImplErr(String reason) {
+    public ErrException(String reason) {
         super(500, "Err implementation error.", new Exception(reason));
     }
 }

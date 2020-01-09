@@ -121,9 +121,9 @@ public class Err extends RuntimeException {
      * @param uuid    of the error to pass along
      * @param message of the error to pass along
      * @return parsed Err
-     * @throws ImplErr cased by parsing
+     * @throws ErrException cased by parsing
      */
-    public static Err parse(String url, String uuid, String message) throws ImplErr {
+    public static Err parse(String url, String uuid, String message) throws ErrException {
         try {
             Class<?> clazz = Err.getClass(url);
             Constructor<?> constructor = clazz.getConstructor();
@@ -133,15 +133,15 @@ public class Err extends RuntimeException {
             err.message = message;
             return err;
         } catch (ClassNotFoundException ex) {
-            throw new ImplErr("Error class not found for " + url);
+            throw new ErrException("Error class not found for " + url);
         } catch (NoSuchMethodException ex) {
-            throw new ImplErr("public Constructor.<init>(String) not found for " + url);
+            throw new ErrException("public Constructor.<init>(String) not found for " + url);
         } catch (IllegalAccessException ex) {
-            throw new ImplErr("Constructor.<init>(String) access control for " + url);
+            throw new ErrException("Constructor.<init>(String) access control for " + url);
         } catch (InstantiationException ex) {
-            throw new ImplErr("Abstract error class for " + url);
+            throw new ErrException("Abstract error class for " + url);
         } catch (InvocationTargetException ex) {
-            throw new ImplErr("Underlying constructor initialization error for " + url);
+            throw new ErrException("Underlying constructor initialization error for " + url);
         }
     }
 }

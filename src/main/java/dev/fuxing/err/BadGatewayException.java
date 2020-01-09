@@ -7,17 +7,17 @@ package dev.fuxing.err;
  * @author Fuxing Loh
  * @since 2019-04-02 at 11:48
  */
-public class BadGatewayErr extends Err {
+public class BadGatewayException extends Err {
 
-    public BadGatewayErr() {
+    public BadGatewayException() {
         super(502, "Bad gateway.");
     }
 
-    public BadGatewayErr(String message) {
+    public BadGatewayException(String message) {
         super(502, message);
     }
 
-    public BadGatewayErr(String message, Throwable throwable) {
+    public BadGatewayException(String message, Throwable throwable) {
         super(502, message, throwable);
     }
 }

@@ -2,6 +2,8 @@ package dev.fuxing.err;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.UUID;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -12,8 +14,8 @@ class ErrParserTest {
 
     @Test
     void notFound() {
-        assertThrows(ImplErr.class, () -> {
-            throw Err.parse("ABC", "");
+        assertThrows(ErrException.class, () -> {
+            throw Err.parse("ABC", UUID.randomUUID().toString(), "");
         });
     }
 

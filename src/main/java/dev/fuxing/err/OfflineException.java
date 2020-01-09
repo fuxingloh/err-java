@@ -7,17 +7,17 @@ package dev.fuxing.err;
  * @author Fuxing Loh
  * @since 2017-03-18 at 15:42
  */
-public class OfflineErr extends Err {
+public class OfflineException extends Err {
 
-    public OfflineErr() {
+    public OfflineException() {
         super(502, "Offline error.");
     }
 
-    public OfflineErr(String message) {
+    public OfflineException(String message) {
         super(502, message);
     }
 
-    public OfflineErr(String message, Throwable throwable) {
+    public OfflineException(String message, Throwable throwable) {
         super(502, message, throwable);
     }
 }

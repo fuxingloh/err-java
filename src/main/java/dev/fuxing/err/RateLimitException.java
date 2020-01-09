@@ -6,17 +6,17 @@ package dev.fuxing.err;
  * @author Fuxing Loh
  * @since 2018-06-29 at 14:52
  */
-public class RateLimitErr extends Err {
+public class RateLimitException extends Err {
 
-    public RateLimitErr() {
+    public RateLimitException() {
         super(429, "Too many requests.");
     }
 
-    public RateLimitErr(String message) {
+    public RateLimitException(String message) {
         super(429, message);
     }
 
-    public RateLimitErr(String message, Throwable throwable) {
+    public RateLimitException(String message, Throwable throwable) {
         super(429, message, throwable);
     }
 }

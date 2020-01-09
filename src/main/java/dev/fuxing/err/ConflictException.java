@@ -16,16 +16,16 @@ package dev.fuxing.err;
  * @author Fuxing Loh
  * @since 2019-01-28 at 13:54
  */
-public class ConflictErr extends Err {
+public class ConflictException extends Err {
 
-    public ConflictErr() {
+    public ConflictException() {
         super(409, "Conflict.");
     }
 
     /**
      * @param message information for the user to fix the problem.
      */
-    public ConflictErr(String message) {
+    public ConflictException(String message) {
         super(409, message);
     }
 
@@ -33,7 +33,7 @@ public class ConflictErr extends Err {
      * @param message   information for the user to fix the problem.
      * @param throwable exception for stacktrace
      */
-    public ConflictErr(String message, Throwable throwable) {
+    public ConflictException(String message, Throwable throwable) {
         super(409, message, throwable);
     }
 }
