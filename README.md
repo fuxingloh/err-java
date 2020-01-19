@@ -1,10 +1,8 @@
-# Err, Exception Handling across Services
-
-> I shelved this project to work on something else. I might revisit this in this future.
-
+# error-url
+> A unified language agnostic url based error handling spec.
 
 ## Motivation
-Every since 2012 where I wrote my first line of code in java, I never truly found an elegant solutions for error handling. 
+Every since 2012 where I wrote my first line of code, I never truly found an elegant solutions for error handling. 
 There is hibernate for relational database. Log4j or logback for logging. And many widely accepted standards for many other requirements.
 I have been working as a full stack developer for over 5 years now. I often work with system or application that crosses multiple platform. 
 I took inspiration from multiple API documentation that I have seen over the years.
