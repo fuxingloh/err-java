@@ -16,17 +16,17 @@ package dev.fuxing.err;
  * @author Fuxing Loh
  * @since 2019-01-28 at 13:54
  */
-public class ConflictException extends Err {
+public class ConflictException extends ErrorURL {
 
     public ConflictException() {
-        super(409, "Conflict.");
+        super(409, FUXING_ERR_DOMAIN, ConflictException.class, "The request could not be completed due to a conflict with the current state of the resource.", null);
     }
 
     /**
      * @param message information for the user to fix the problem.
      */
     public ConflictException(String message) {
-        super(409, message);
+        super(409, FUXING_ERR_DOMAIN, ConflictException.class, message, null);
     }
 
     /**
@@ -34,6 +34,6 @@ public class ConflictException extends Err {
      * @param throwable exception for stacktrace
      */
     public ConflictException(String message, Throwable throwable) {
-        super(409, message, throwable);
+        super(409, FUXING_ERR_DOMAIN, ConflictException.class, message, throwable);
     }
 }

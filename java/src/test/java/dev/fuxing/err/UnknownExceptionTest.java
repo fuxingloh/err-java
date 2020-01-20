@@ -2,24 +2,32 @@ package dev.fuxing.err;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author Fuxing Loh
- * @since 2020-01-07 at 08:28
+ * @since 2020-01-20 at 14:22
  */
-class UnknownExceptionTest {
+class UnknownExceptionTest extends AbstractTest {
 
-    /**
-     * Test UnknownErr is automatically registered and auto parsed
-     */
     @Test
-    void parse() {
-        Err err = Err.parse("https://err.fuxing.dev/UnknownErr", UUID.randomUUID().toString(), "Unknown error.");
-        assertEquals(UnknownException.class, err.getClass());
-        assertEquals("UnknownErr", err.getClass().getSimpleName());
-        assertEquals("Unknown error.", err.getMessage());
+    void empty() {
+        assertErrorURL(assertThrows(UnknownException.class, () -> {
+            throw new UnknownException();
+        }), UnknownException.class, 500);
+    }
+
+    @Test
+    void message() {
+        assertErrorURL(assertThrows(UnknownException.class, () -> {
+            throw new UnknownException("message UnknownException");
+        }), UnknownException.class, 500, "message UnknownException");
+    }
+
+    @Test
+    void messageException() {
+        assertErrorURL(assertThrows(UnknownException.class, () -> {
+            throw new UnknownException("message UnknownException", new IllegalArgumentException());
+        }), UnknownException.class, 500, "message UnknownException", IllegalArgumentException.class);
     }
 }

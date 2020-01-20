@@ -1,18 +1,27 @@
-# error-url
-> A unified language agnostic url based error handling spec.
+# Error URL
+A unified language agnostic url based error handling **spec**.
+
+> TLDR: Use URL for your error type, to converge user into a website for debugging and tracing.
+
+```json
+{
+  "code": 500,
+  "url": "https://err.fuxing.dev/RateLimitException?uuid=1234",
+  "message": "What happened, detailed enough to understand what to do next."
+}
+```
 
 ## Motivation
 Every since 2012 where I wrote my first line of code, I never truly found an elegant solutions for error handling. 
-There is hibernate for relational database. Log4j or logback for logging. And many widely accepted standards for many other requirements.
-I have been working as a full stack developer for over 5 years now. I often work with system or application that crosses multiple platform. 
-I took inspiration from multiple API documentation that I have seen over the years.
+For Java, there is hibernate for relational database, Log4j or logback for logging. 
+And many widely accepted standards for many other requirements and languages.
+I have been working as a full stack developer for over 5 years now. 
+I often work with system or application that crosses multiple platform, languages and system. 
+I took inspiration from multiple API documentation that I have seen over the years and this is my take on it.
 
-There are quite many solution but this is my take on it.
-
-## Error Structure
-
+## Structure
 #### Code
-Also HTTP status code, it's a easy to understand number that proxy or load balancer knows what to do.
+Also HTTP status code, it's an easy to understand number that proxy or load balancer knows what to do.
 
 #### URL
 Think of it as an `URI`, being a unique identifier that will guarantee uniqueness across systems and company.
@@ -23,28 +32,20 @@ Also included, `?uuid=1234` for tracing, where internal engineer can use that in
 Just an error message that is detail enough for anyone to understand what to do next.
 Message must not contain any information of object manipulated, you might accidentally leak user/security info.
 Same for stacktrace, or internal error message, just don't include any dynamic info. 
-Error message *must be static message* you wrote and never inferred. 
+Error message **must be static message** you wrote and never inferred. 
 
-```json
-{
-  "code": 500,
-  "url": "https://err.fuxing.dev/RateLimitException?uuid=1234",
-  "message": "What happened, detailed enough to understand what to do next."
-}
-```
 
 ## Across Services
-Basically the structure above is just the format. 
-This package uses the java reflection to parse and properly type the error. (I might change this.) 
+Basically the structure above is just the spec aka the format. 
 As you might want to catch and handled them across your service.
 Or you might just want to propagate the error down stream. 
 
 
-## What you can do with the unified URL
+## What's next?
 `https://err.fuxing.dev/RateLimitException?uuid=1234`
 
-With an unified err domain you can start converging your error information into one platform.
-These are some things you can do with such a platform.
+With an unified error domain you can start converging your error information into one platform.
+With a platform where your error converge, you can create amazing things like this: 
 
 - External user can use it to get help.
 - Internal engineer can use it for debugging as that's all you need to debug (trace id, and error).

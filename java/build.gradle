@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'dev.fuxing'
-version '0.1.0'
+version '0.2.0'
 
 ext.jUnitVersion = '5.5.2'
 
@@ -24,9 +24,6 @@ dependencies {
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: jUnitVersion
 
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: jUnitVersion
-
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
-    compile group: 'com.typesafe', name: 'config', version: '1.4.0'
 }
 
 test {

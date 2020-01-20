@@ -7,17 +7,17 @@ package dev.fuxing.err;
  * @author Fuxing Loh
  * @since 2019-04-02 at 11:48
  */
-public class BadGatewayException extends Err {
+public class BadGatewayException extends ErrorURL {
 
     public BadGatewayException() {
-        super(502, "Bad gateway.");
+        super(502, FUXING_ERR_DOMAIN, BadGatewayException.class, "Bad gateway, received an invalid response from the upstream server.", null);
     }
 
     public BadGatewayException(String message) {
-        super(502, message);
+        super(502, FUXING_ERR_DOMAIN, BadGatewayException.class, message, null);
     }
 
     public BadGatewayException(String message, Throwable throwable) {
-        super(502, message, throwable);
+        super(502, FUXING_ERR_DOMAIN, BadGatewayException.class, message, throwable);
     }
 }
