@@ -1,5 +1,5 @@
 # Error URL
-A unified language agnostic url based error handling **spec**.
+A unified language-agnostic URL based error handling **spec**.
 
 > TLDR: Use URL for your error type, to converge user into a website for debugging and tracing.
 
